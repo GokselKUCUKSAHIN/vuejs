@@ -4,9 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
-    <h1>hello, world</h1>
-    <p>hi?</p>
+    <div id="hi">
+      <h1>{{greet}}, {{pwr}} Vue.JS: {{ count }}👍</h1>
+      <button @click="inc" v-text="like"></button>
+      <h1>Hey</h1>
+    </div>
+    <script>
+      new Vue({
+        el: "#hi",
+        data: {
+          like: "Like It👍",
+          greet: "Hello",
+          pwr: "World",
+          count: 0,
+        },
+        methods: {
+          inc() {
+            this.count++;
+          },
+        },
+      });
+    </script>
   </body>
 </html>
