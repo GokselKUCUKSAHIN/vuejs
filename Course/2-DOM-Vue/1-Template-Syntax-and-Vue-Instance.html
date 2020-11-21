@@ -9,27 +9,18 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{ title }}</h1>
-      <p>{{ description }}</p>
-      <input type="text" @input="changeTitle" />
-      <button @click="single">Click me</button>
+      <h1>{{ hi() }}</h1>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
-          title: "Merhaba Dünya! Vue JS",
-          description: "Bu bir açıklamadır",
+          title: "Jelly",
         },
         methods: {
-          changeTitle(e) {
-            this.title = e.target.value;
-          },
-          double(e) {
-            console.log("Double");
-          },
-          single(e) {
-            console.log("Single!");
+          hi() {
+            return "Greetings!";
+            // return {name: "Göksel", surname: "Küçükşahin",};
           },
         },
       });
