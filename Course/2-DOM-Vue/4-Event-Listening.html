@@ -35,12 +35,21 @@
       #app > * {
         margin: 5px;
       }
+      .center {
+        margin: 0 auto;
+        text-align: center;
+      }
     </style>
     <title>Event Listening 💾</title>
   </head>
   <body>
-    <div id="app" class="p-2 m-2" >
-      <button v-on:click="showAlert" class="btn btn-outline-info">Show Alert</button>
+    <div class="container-fluid p-5" style="background-color: #dfdfdf;">
+      <h1 class="center display-3">➡️⬇️↘️⏤✊ = ⏫ 🐉 👊 🕹</h1>
+    </div>
+    <div id="app" class="p-2 m-2">
+      <button v-on:click="showAlert" class="btn btn-outline-info">
+        Show Alert
+      </button>
       <button @click="count++;">Increase Count</button>
       <button @click="increaseCount">Increase Count</button>
       <p>Count: {{ count }}</p>
