@@ -10,7 +10,6 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-
     <style>
       .blueBox {
         background-color: aqua;
@@ -56,8 +55,8 @@
       <button v-on:click="showAlert" class="btn btn-outline-info">
         Show Alert
       </button>
-      <button @click="count++;">Increase Count</button>
-      <button @click="increaseCount">Increase Count</button>
+      <button @click="count++;" class="btn btn-primary">Increase Count</button>
+      <button @click="increaseCount" class="btn btn-secondary">Increase Count</button>
       <p>Count: {{ count }}</p>
       <div class="blueBox" @mousemove="captureMouseMove">
         <p>Mouse Coordinate: {{ mx }}, {{ my }}</p>
