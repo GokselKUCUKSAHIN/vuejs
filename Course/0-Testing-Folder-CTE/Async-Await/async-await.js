@@ -16,8 +16,7 @@ async function fetchPost() {
   return ret;
 }
 
-async function loadHTML()
-{
+async function loadHTML() {
   todoListEl.innerHTML = await fetchPost();
 }
 
