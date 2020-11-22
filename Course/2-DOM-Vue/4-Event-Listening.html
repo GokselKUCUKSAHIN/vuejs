@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .blueBox {
+        background-color: aqua;
+        padding: 10px;
+        padding-left: 0px;
+        padding-top: 0px;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
     <title>Event Listening 💾</title>
   </head>
   <body>
@@ -12,12 +22,17 @@
       <button @click="count++;">Increase Count</button>
       <button @click="increaseCount">Increase Count</button>
       <p>Count: {{ count }}</p>
+      <div class="blueBox">
+        <p>Mouse Coordinate: {{ mx }}, {{ my }}</p>
+      </div>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
           count: 0,
+          mx: 0,
+          my: 0,
         },
         methods: {
           increaseCount() {
@@ -25,6 +40,10 @@
           },
           showAlert() {
             alert(`Current Count = ${this.count}.`);
+          },
+          getCoordinates(e) {
+            this.mx = e.ClientX;
+            this.my = e.ClientY;
           },
         },
       });
