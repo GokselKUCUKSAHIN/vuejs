@@ -32,6 +32,9 @@
         min-height: 300px;
         background-color: yellow;
       }
+      .blueViolet {
+        background-color: blueviolet;
+      }
       #app > * {
         margin: 5px;
       }
@@ -43,7 +46,7 @@
     <title>Event Listening 💾</title>
   </head>
   <body>
-    <div class="container-fluid p-5" style="background-color: #dfdfdf;">
+    <div class="container-fluid p-5" style="background-color: #dfdfdf">
       <h1 class="center display-3">➡️⬇️↘️⏤✊ = ⏫ 🐉 👊 🕹</h1>
     </div>
     <div id="app" class="p-2 m-2">
@@ -59,11 +62,18 @@
     </div>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-4 redBox">hello</div>
-        <div class="col-lg-2 yellowBox">Hi</div>
-        <div class="col-lg-6 coralBox">?</div>
+        <div class="col-lg-4 redBox pl-1 py-3">
+          <div class="row m-3 blueViolet p-3"><h3>Item-1</h3></div>
+          <div class="row m-3 blueViolet p-3"><h3>Item-2</h3></div>
+          <div class="row m-3 blueViolet p-3"><h3>Item-3</h3></div>
+          <div class="row m-3 blueViolet p-3"><h3>Item-4</h3></div>
+          <div class="row m-3 blueViolet p-3"><h3>Item-5</h3></div>
+        </div>
+        <div class="col-lg-4 yellowBox">Hi</div>
+        <div class="col-lg-4 coralBox">?</div>
       </div>
     </div>
+    <br /><br />
     <script>
       new Vue({
         el: "#app",
