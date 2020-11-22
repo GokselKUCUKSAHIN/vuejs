@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Quiz</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>Tıkla <a v-bind:href="adr" v-text="title"></a></p>
+      <button v-on:click="hey">Change Adres</button>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          state: true,
+          title: "Google",
+          titles: ["Google", "Github"],
+          adr: "https://www.google.com",
+          adrs: [
+            "https://www.google.com",
+            "https://www.github.com/GokselKUCUKSAHIN",
+          ],
+        },
+        methods: {
+          hey() {
+            this.state = !this.state;
+            if (this.state) {
+              this.title = this.titles[0];
+              this.adr = this.adrs[0];
+            } else {
+              this.title = this.titles[1];
+              this.adr = this.adrs[1];
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
