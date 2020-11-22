@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1🎩</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="exercise">
+      <div>
+        <p>Şu anki Değer: {{ value }}</p>
+        <button @click="value+=5">Add 5</button>
+        <button @click="value+=1">Add 1</button>
+        <p>{{ result }}</p>
+      </div>
+      <div>
+        <input
+          v-model="ms"
+          type="text"
+          placeholder="Kaç saniye sonra değişsin?"
+          @keypress.enter="submit"
+        />
+        <p>{{ value }}</p>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#exercise",
+        data: {
+          value: 0,
+          result: 0,
+          ms: "",
+        },
+        methods: {
+          submit() {
+            console.log("Enter!");
+            setTimeout(() => {
+              this.result = this.value;
+            }, this.ms);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
