@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>img {width: 250px;}</style>
+    <title>Jelly 👾</title>
+  </head>
+  <body>
+    <div id="exercise">
+      <p>VueJS Muazzam bir Framework - {{ NAME }} ({{ AGE }})</p> <!--1-->
+      <p>{{ AGE * 5 }}</p> <!--2-->
+      <p v-once v-text="getRandomNumber()"></p> <!--3-->
+      <img v-bind:src="imgURL" /> <!--4-->
+      <div>
+        <input type="text" v-on:input="changeName"/> <!--5-->
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#exercise",
+        data: {
+          NAME: "Göksel",
+          AGE: 22,
+          imgURL: 'https://memegenerator.net/img/instances/58621916.jpg',
+        },
+        methods: {
+          getRandomNumber() {
+            return Math.random();
+          },
+          changeName(e){
+            this.NAME = e.target.value;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
