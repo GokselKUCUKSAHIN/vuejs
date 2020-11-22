@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Event Listening 💾</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="showAlert">Show Alert</button>
+      <button @click="count++;">Increase Count</button>
+      <button @click="increaseCount">Increase Count</button>
+      <p>Count: {{ count }}</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          count: 0,
+        },
+        methods: {
+          increaseCount() {
+            this.count++;
+          },
+          showAlert() {
+            alert(`Current Count = ${this.count}.`);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
