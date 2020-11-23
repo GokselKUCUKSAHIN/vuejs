@@ -23,6 +23,9 @@
         min-height: 300px;
         background-color: crimson;
       }
+      .purpleBox {
+        background-color: purple;
+      }
       .coralBox {
         min-height: 300px;
         background-color: coral;
@@ -56,9 +59,11 @@
         Show Alert
       </button>
       <button @click="count++;" class="btn btn-primary">Increase Count</button>
-      <button @click="increaseCount" class="btn btn-secondary">Increase Count</button>
+      <button @click="increaseCount(3)" class="btn btn-secondary">
+        Increase Count
+      </button>
       <p>Count: {{ count }}</p>
-      <div class="blueBox" @mousemove="captureMouseMove">
+      <div class="blueBox" @mousemove="captureMouseMove(2, $event)">
         <p>Mouse Coordinate: {{ mx }}, {{ my }}</p>
       </div>
     </div>
@@ -85,16 +90,17 @@
           my: 0,
         },
         methods: {
-          increaseCount() {
-            this.count++;
+          increaseCount(c) {
+            this.count += c;
           },
           showAlert() {
             alert(`Current Count = ${this.count}.`);
           },
-          captureMouseMove(e) {
+          captureMouseMove(step ,e) {
             // console.log(e);
             this.mx = e.offsetX;
             this.my = e.offsetY;
+            this.count += step;
           },
         },
       });
