@@ -7,11 +7,30 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <button v-on:click="changeLink">Linki Değiştirmek için tıklayınız.</button>
+      <a v-bind:href="link">Link</a>
+      <hr>
+      <button @click="changeLink">Linki Değiştirmek için tıklayınız.</button> <!-- v-on: yerine @ yeterli -->
+      <a :href="link">Link</a>       <!-- v-bind: yerine : yeterli -->
+
+    </div>
     <script>
       new Vue({
         el: "#app",
-        data: {},
+        data: {
+            link: "https://www.github.com/GokselKUCUKSAHIN/",
+        },
+        methods: {
+          changeLink()
+          {
+            this.link = "https://www.google.com.tr"
+          }
+          /*
+          Benzer şekilde
+          changeLink : function() yerine changeLink() yazılabilir.
+          */
+        },
       });
     </script>
   </body>
