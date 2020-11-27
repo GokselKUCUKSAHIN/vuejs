@@ -4,11 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💻 Computed Properties</title>
+    <title>👓 Watch</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
-    <!-- Computed sadece değişimde çalışır. Method ise her zaman. -->
     <div id="app">
       <button @click="counter++">Count Up</button>
       <button @click="counter--">Count Down</button>
@@ -44,6 +43,15 @@
               : this.counter == 10
               ? "The counter is equals 10."
               : "The counter is lesser than 10.";
+          },
+        },
+        watch: {
+          counter(value) {
+            console.log("Watch:", value);
+            setTimeout(() => {
+              vm = this; // Vue instance
+              vm.counter = 0;
+            }, 1500);
           },
         },
       });
