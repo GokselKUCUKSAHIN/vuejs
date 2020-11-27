@@ -13,19 +13,23 @@
         display: inline-block;
         margin-right: 5px;
       }
+      .yellow {
+        background-color: khaki;
+      }
     </style>
   </head>
   <body>
     <div id="app">
-      <div class="box"></div>
+      <div @click="isAttached = !isAttached" :class="{ yellow : isAttached }" class="box"></div>
       <div class="box"></div>
       <div class="box"></div>
     </div>
-
     <script>
       new Vue({
         el: "#app",
-        data: {},
+        data: {
+          isAttached: false,
+        },
       });
     </script>
   </body>
