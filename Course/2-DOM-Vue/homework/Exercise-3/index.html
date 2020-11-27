@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Execise 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <p>Şu anki Değer: {{ value }}</p>
+        <button @click="value+=1">Inc Value by 1</button>
+        <button @click="value+=5">Inc Value by 5</button>
+        <p>{{ result }}</p>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Kaç milisaniye sonra sıfırlansın?"
+          v-model="ms"
+        />
+        <p>{{ value }}</p>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          value: 0,
+          ms: 5000,
+        },
+        computed: {
+          result() {
+            return this.value != 33 ? "Henüz Bitmedi!!!" : "Tamamlandı.";
+          },
+        },
+        watch: {
+          result(val) {
+            vm = this;
+            setTimeout(() => {
+              vm.value = 0;
+            }, vm.ms);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
