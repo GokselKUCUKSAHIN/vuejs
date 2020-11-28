@@ -36,6 +36,17 @@
         margin: 0;
         color: snow;
       }
+      .box {
+        width: 250px;
+        height: 250px;
+        border: 3px solid rebeccapurple;
+      }
+      .jellyGreen {
+        background-color: rgb(46, 231, 9);
+      }
+      .marg {
+        margin: 10px;
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
@@ -43,31 +54,33 @@
     <div id="app">
       <!-- 1)  Efekti Butona basarak başlatın. Efekt "highlight" ve/veya "shrink" class'ları arasında değişmelidir.
         Bu değişim her bir interval döngüsünde olmalıdır. ("effect" id' li div'e o anki aktif olan class eklenecektir.) -->
-      <div>
-        <button>Efekti Başlat!</button>
-        <!-- @click="startEffect" -->
-        <div id="effect"></div>
+      <div class="marg">
+        <button @click="startEffect">Efekti Başlat!</button>
+        <!--  -->
+        <div id="effect" :class="classEffect"></div>
       </div>
+
       <!-- 2) Birkaç tane CSS Class'ı üreterek bu Class'ları Array Syntax'ı ile aşağıdaki <div>' e ekleyiniz -->
-      <div>Henüz bir class'ım yok :(</div>
+      <div class="[marg, jellyGreen, box]">Henüz bir class'ım yok :(</div>
       <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
-      <div>
-        <input type="text" />
-        <div></div>
+      <div style="margin: 10px">
+        <input type="text" v-model="inputClassName" placeholder="Soru 3: " />
+        <div :class="inputClassName"></div>
       </div>
-      <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. Bunları kullanarak hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
-      <div>
-        <input type="text" />
-        <input type="text" />
+      <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. Bunları kullanarak 
+        hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
+      <div class="marg">
+        <input type="text" placeholder="Soru 4: " />
+        <input type="text" placeholder="Soru 4: " />
         <div></div>
       </div>
       <!-- 5) 3.Uygulamayı tekrarlayın. Fakat bu sefer Class Adı yerine Denk gelecek Style Kodlarını ekleyiniz.  -->
-      <div>
-        <input type="text" />
+      <div class="marg">
+        <input type="text" placeholder="Soru 5: " />
         <div></div>
       </div>
       <!-- 6) setInterval ve Style Binding kullanarak Basit bir progress bar üretin. Progress bar' ın çalışmasını buton'a basarak başlatın. -->
-      <div style="margin: 10px">
+      <div class="marg">
         <button @click="startProgress">Progress İşlemini Başlat!</button>
         <div class="progress-box">
           <div class="progress-fill" :style="{width: percent + '%'}">
@@ -81,9 +94,29 @@
       new Vue({
         el: "#app",
         data: {
+          // Soru 1
+          classEffect: "",
+          isPlaying: false,
+          toggle: false,
+          //
+          inputClassName: "",
+          // Soru 6
           percent: 0,
         },
         methods: {
+          startEffect() {
+            this.isPlaying = !this.isPlaying;
+            vm = this;
+            var intId = setInterval(() => {
+              if (vm.isPlaying) {
+                vm.classEffect = (vm.toggle = !vm.toggle)
+                  ? "highlight"
+                  : "shrink";
+              } else {
+                clearInterval(intId);
+              }
+            }, 250);
+          },
           startProgress() {
             // console.log("method çalıştı");
             this.percent = 0;
