@@ -37,15 +37,23 @@
         color: snow;
       }
       .box {
-        width: 250px;
-        height: 250px;
+        margin: 5px;
+        margin-left: 0px;
+        width: 150px;
+        height: 150px;
         border: 3px solid rebeccapurple;
+      }
+      .blue {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
       }
       .jellyGreen {
         background-color: rgb(46, 231, 9);
       }
       .marg {
         margin: 10px;
+        padding: 10px 0px 10px 5px;
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -56,29 +64,36 @@
         Bu değişim her bir interval döngüsünde olmalıdır. ("effect" id' li div'e o anki aktif olan class eklenecektir.) -->
       <div class="marg">
         <button @click="startEffect">Efekti Başlat!</button>
-        <!--  -->
-        <div id="effect" :class="classEffect"></div>
+        <div id="effect" :class="classEffect">Foo Bar</div>
       </div>
 
       <!-- 2) Birkaç tane CSS Class'ı üreterek bu Class'ları Array Syntax'ı ile aşağıdaki <div>' e ekleyiniz -->
-      <div class="[marg, jellyGreen, box]">Henüz bir class'ım yok :(</div>
-      <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
-      <div style="margin: 10px">
-        <input type="text" v-model="inputClassName" placeholder="Soru 3: " />
-        <div :class="inputClassName"></div>
+      <div class="marg">
+        <div :class="{box: true, jellyGreen: isPlaying, blue: toggle}">
+          Henüz bir class'ım yok :(
+        </div>
       </div>
+
+      <!-- 3) Örnek birkaç tane Class üreterek (Ya da ürettiklerinizi kullanarak) <input> içerisine Class adı girerek hemen alttaki <div> elementine bu yazılan Class'ı eklemeyi yapınız. -->
+      <div class="marg">
+        <input type="text" v-model="inputClassName" placeholder="Soru 3: " />
+        <div :class="inputClassName">Foo Bar</div>
+      </div>
+
       <!-- 4) Kullanıcının Class isimlerini girebileceği iki adet <input> elementimiz var. Bunları kullanarak 
         hemen alttaki <div> elementinin Class'larini attached etmesini sağlayınız  -->
       <div class="marg">
-        <input type="text" placeholder="Soru 4: " />
-        <input type="text" placeholder="Soru 4: " />
-        <div></div>
+        <input type="text" placeholder="Soru 4: " v-model="textField1" />
+        <input type="text" placeholder="Soru 4: " v-model="textField2" />
+        <div :class="computedClass">Foo Bar</div>
       </div>
+
       <!-- 5) 3.Uygulamayı tekrarlayın. Fakat bu sefer Class Adı yerine Denk gelecek Style Kodlarını ekleyiniz.  -->
       <div class="marg">
-        <input type="text" placeholder="Soru 5: " />
-        <div></div>
+        <input type="text" placeholder="Soru 5: " v-model="styleNames" />
+        <div class="box" :style="computedStyle">Foo Bar</div>
       </div>
+
       <!-- 6) setInterval ve Style Binding kullanarak Basit bir progress bar üretin. Progress bar' ın çalışmasını buton'a basarak başlatın. -->
       <div class="marg">
         <button @click="startProgress">Progress İşlemini Başlat!</button>
@@ -98,8 +113,15 @@
           classEffect: "",
           isPlaying: false,
           toggle: false,
-          //
+          // Soru 2
+          isActive: false,
+          // Soru 3
           inputClassName: "",
+          // Soru 4
+          textField1: "",
+          textField2: "",
+          //Soru 5
+          styleNames: "",
           // Soru 6
           percent: 0,
         },
@@ -134,6 +156,14 @@
               }
             }, 100);
           },
+        },
+        computed: {
+          computedStyle() {
+            return this.styleNames;
+          },
+          computedClass() {
+            return `${this.textField1} ${this.textField2}`;
+          }
         },
       });
     </script>
