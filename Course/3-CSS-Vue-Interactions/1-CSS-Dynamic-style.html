@@ -16,18 +16,27 @@
       .yellow {
         background-color: khaki;
       }
+      .red {
+        background-color: red;
+      }
+      .font {
+        color: red;
+        font-size: 20px;
+      }
+
     </style>
   </head>
   <body>
     <div id="app">
       <div @click="isAttached = !isAttached" :class="{ yellow : isAttached }" class="box"></div>
-      <div class="box"></div>
+      <div :class="['font', 'yellow']" :style="borderProp"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, maiores atque dolori dignissimos!</p></div>
       <div class="box"></div>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
+          borderProp: "border: 1px solid green",
           isAttached: false,
         },
       });
