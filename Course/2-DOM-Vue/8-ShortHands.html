@@ -11,9 +11,10 @@
       <button v-on:click="changeLink">Linki Değiştirmek için tıklayınız.</button>
       <a v-bind:href="link">Link</a>
       <hr>
-      <button @click="changeLink">Linki Değiştirmek için tıklayınız.</button> <!-- v-on: yerine @ yeterli -->
-      <a :href="link">Link</a>       <!-- v-bind: yerine : yeterli -->
-
+      <button @click="changeLink">Linki Değiştirmek için tıklayınız.</button>
+      <!-- v-on: yerine @ yeterli -->
+      <a :href="link">Link</a>
+      <!-- v-bind: yerine : yeterli -->
     </div>
     <script>
       new Vue({
