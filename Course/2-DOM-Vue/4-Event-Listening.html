@@ -53,7 +53,7 @@
         background-color: blueviolet;
       }
       .blueViolet:hover {
-        background-color: darkmagenta;
+        background-color: darkmagenta
       }
       #app > * {
         margin: 5px;
@@ -61,6 +61,9 @@
       .center {
         margin: 0 auto;
         text-align: center;
+      }
+      .lime {
+        background-color: limegreen;
       }
     </style>
     <title>Event Listening 💾</title>
@@ -77,7 +80,7 @@
       <button @click="increaseCount(3)" class="btn btn-secondary">
         Increase Count
       </button>
-      <p>Count: {{ count }}</p>
+      <p :class="{'lime': overflow}">Count: {{ count }}</p>
       <div class="blueBox" @mousemove="captureMouseMove(2, $event)">
         <div class="littleRedBox" @mousemove.stop>
           <p style="color: snow; padding: 4px; text-align: center; margin: 0 auto;"><b>Cant Count here</b></p>
@@ -106,6 +109,13 @@
           count: 0,
           mx: 0,
           my: 0,
+          overflow: false,
+        },
+        watch: {
+          count(value)
+          {
+            this.overflow = value >= 1000;
+          }
         },
         methods: {
           increaseCount(c) {
