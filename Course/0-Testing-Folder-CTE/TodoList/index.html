@@ -6,6 +6,11 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <style>
+      span::selection {
+        background-color: rgba(red, green, blue, alpha) !important;
+      }
+    </style>
   </head>
   <body>
     <div id="app" class="w3-card-2 w3-margin" style="max-width: 400px">
@@ -17,7 +22,7 @@
           {{item}}
           <span
             @click="removeItem(index)"
-            style="cursor: pointer"
+            style="cursor: pointer;"
             class="w3-right w3-margin-right"
             >×</span
           >
