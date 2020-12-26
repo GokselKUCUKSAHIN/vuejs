@@ -8,14 +8,36 @@
   </head>
   <body>
     <div id="app">
-      <p @click="show=!show">Beni görebilirsin.</p>
-      <p v-if="show">Beni görebilir misin acaba? :)</p>
+      <p v-if="show">Beni görebilirsin.</p>
+      <p v-else>Beni görebilir misin acaba? :)</p>
+      <button @click="show=!show">Gizle/Göster</button>
+      <br />
+      <p v-if="number < 10">Sayi 10'dan küçük.</p>
+      <p v-else-if="number === 10">Sayi 10'a eşit.</p>
+      <p v-else>Sayi 10'dan büyük.</p>
+      <button @click="getRandom">Random Sayı üret</button>
+      <p>Sayi = {{number}}</p>
+      <hr />
+      <button @click="vis = !vis">Gizle/Göster</button>
+      <p v-show="vis">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus
+        labore autem recusandae ab repellat molestiae atque numquam at,
+        corrupti, ullam quas vero dolor animi dolorum, sunt explicabo sapiente
+        officia aliquam.
+      </p>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
           show: false,
+          vis: false,
+          number: 11,
+        },
+        methods: {
+          getRandom() {
+            this.number = Math.floor(Math.random() * 21);
+          },
         },
       });
     </script>
