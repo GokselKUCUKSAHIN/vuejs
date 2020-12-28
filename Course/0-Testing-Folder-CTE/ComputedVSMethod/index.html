@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{test}}</h1>
+      <h2> {{getMean}}</h2>
+      <button @click="random">{{randNum}}</button>
+      <button @click="myFlag = Math.random()*20">Change Flag</button>
+      <h2>{{printFlag()}}</h2>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          test: "Vue is Working!",
+          myFlag: 10,
+          number1: 123,
+          number2: 761,
+          randNum: 0,
+        },
+        methods: {
+          printFlag()
+          {
+            return (this.myFlag > 10 ? "Flag 10'dan büyük.": "Flag 10'dan küçük eşit.");
+          },
+          random()
+          {
+            this.randNum =  Math.floor(Math.random()*20) - 10;
+            this.number2 += this.randNum;
+          },
+        },
+        computed: {
+          getMean()
+          {
+            console.log("Computed çalıştı");
+            return (this.number1 + this.number2) / 2;
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
