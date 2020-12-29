@@ -15,38 +15,39 @@
   </head>
   <body>
     <div id="app">
+      <button @click="products.push('Headset')">Ekle</button>
       <ul>
-        <li v-for="product in products">{{ product }}</li>
+        <li v-for="product in products" :key="product">{{ product }}</li>
       </ul>
       <hr />
       <ul>
-        <li v-for="(product,index) in products">
+        <li v-for="(product,index) in products" :key="product">
           <b>{{ index }}-</b> {{ product }}
         </li>
       </ul>
       <hr />
-      <div class="box" v-for="(product,index) in products">
+      <div class="box" v-for="(product,index) in products" :key="product">
         <h3>{{product}}</h3>
         <p>{{index}}</p>
       </div>
       <hr />
-      <template v-for="(product,index) in products">
+      <template v-for="(product,index) in products" :key="product">
         <h3>{{product}}</h3>
         <p>{{index}}</p>
       </template>
       <hr />
       <ul>
-        <li v-for="personel in persons">
+        <li v-for="personel in persons" :key="personel">
           <ul>
-            <li v-for="(value, key, index) in personel">
+            <li v-for="(value, key, index) in personel" :key="value">
               <em>{{index}}</em> <strong>{{key}}</strong>: {{value}}
             </li>
           </ul>
         </li>
       </ul>
       <hr />
-
-      <span v-for="i in 5"> {{ i }} </span>
+      <span v-for="i in 5" :key="i"> {{ i }} </span>
+      <hr />
     </div>
     <script>
       new Vue({
