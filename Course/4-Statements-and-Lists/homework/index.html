@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- SORU-1 -->
+      <div>
+        <button @click="show = !show">Toggle</button>
+        <!-- V-IF -->
+        <p v-if="show">Beni Görebiliyor musun?</p>
+        <p v-else>Ya da beni görebiliyor musun?</p>
+        <!-- V-SHOW -->
+        <p v-show="show">Beni Görebiliyor musun?</p>
+        <p v-show="!show">Ya da beni görebiliyor musun?</p>
+      </div>
+      <!-- SORU-2 -->
+      <ul>
+        <li v-for="(name, index) in array"><b>{{index}}-)</b> {{name}}</li>
+      </ul>
+      <!-- SORU-3 -->
+      <ul>
+        <li v-for="(value, key) in customObject">
+          <strong>{{ key }}</strong>: {{ value }}
+        </li>
+      </ul>
+      <!-- SORU-4 -->
+      <ul>
+        <li v-for="(value, key, index) in testData">
+          <strong>{{ key }}</strong>:
+          <template v-if="index == 2"
+            ><ul>
+              <li v-for="i in value">
+                <b>{{i}}</b>
+              </li>
+            </ul>
+          </template>
+          <template v-else>{{value}}</template>
+        </li>
+      </ul>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          show: false,
+          array: ["Göksel", "Gökhan", "Defne", "Berk", "Özge"],
+          customObject: {
+            title: "Game of Thrones",
+            author: "George R.R",
+            books: "7",
+          },
+          testData: {
+            name: "NestedLoop",
+            id: 42,
+            data: [3, 1, 4, 1, 5, 9.2, 6, 5, 3.5, 8.9, 7],
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
