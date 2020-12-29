@@ -34,7 +34,19 @@
         <h3>{{product}}</h3>
         <p>{{index}}</p>
       </template>
+      <hr />
+      <ul>
+        <li v-for="personel in persons">
+          <ul>
+            <li v-for="(value, key, index) in personel">
+              <em>{{index}}</em> <strong>{{key}}</strong>: {{value}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <hr />
 
+      <span v-for="i in 5"> {{ i }} </span>
     </div>
     <script>
       new Vue({
