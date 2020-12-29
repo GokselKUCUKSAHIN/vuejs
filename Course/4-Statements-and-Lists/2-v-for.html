@@ -11,6 +11,14 @@
       <ul>
         <li v-for="product in products">{{ product }}</li>
       </ul>
+      <hr />
+      <ul>
+        <li v-for="(product,index) in products">
+          <b>{{ index }}-</b> {{ product }}
+        </li>
+      </ul>
+      <hr />
+      
     </div>
     <script>
       new Vue({
