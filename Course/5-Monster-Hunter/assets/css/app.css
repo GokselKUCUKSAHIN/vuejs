@@ -1,0 +1,50 @@
+#app {
+  box-sizing: border-box;
+  width: 70%;
+  margin: 0 auto;
+}
+.tag-header {
+  margin: 0 auto;
+  text-align: center;
+}
+.progress-box {
+  margin: 10px;
+  background-color: lightgrey;
+  height: 40px;
+}
+.progress-bar {
+  background-color: green;
+  width: 50%;
+  height: 100%;
+}
+.button-box,
+.log {
+  box-shadow: 0px 3px 6px #aaa;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.log ul {
+  list-style: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-inline-start: 0px;
+  padding: 0px 20px 0px 20px;
+}
+.log ul li {
+  margin: 5px;
+}
+.log ul .player-turn {
+  color: blue;
+  background-color: #e4e8ff;
+}
+.log ul .monster-turn {
+  color: red;
+  background-color: #ffc0c1;
+}
+.btn {
+  text-transform: uppercase;
+  box-shadow: 0 1px 1px darkgray;
+}

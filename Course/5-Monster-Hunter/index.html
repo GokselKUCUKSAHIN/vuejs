@@ -11,58 +11,7 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <style>
-      #app {
-        box-sizing: border-box;
-        width: 70%;
-        margin: 0 auto;
-      }
-      .tag-header {
-        margin: 0 auto;
-        text-align: center;
-      }
-      .progress-box {
-        margin: 10px;
-        background-color: lightgrey;
-        height: 40px;
-      }
-      .progress-bar {
-        background-color: green;
-        width: 50%;
-        height: 100%;
-      }
-      .button-box,
-      .log {
-        box-shadow: 0px 3px 6px #aaa;
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-        padding-top: 25px;
-        padding-bottom: 25px;
-      }
-      .log ul {
-        list-style: none;
-        font-weight: bold;
-        text-transform: uppercase;
-        padding-inline-start: 0px;
-        padding: 0px 20px 0px 20px;
-      }
-      .log ul li {
-        margin: 5px;
-      }
-      .log ul .player-turn {
-        color: blue;
-        background-color: #e4e8ff;
-      }
-      .log ul .monster-turn {
-        color: red;
-        background-color: #ffc0c1;
-      }
-      .btn {
-        text-transform: uppercase;
-        box-shadow: 0 1px 1px darkgray;
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/app.css">
   </head>
   <body>
     <div id="app">
@@ -114,93 +63,7 @@
         </ul>
       </div>
     </div>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          isOn: false,
-          myHealth: 100,
-          enemyHealth: 100,
-          actions: [],
-          types: [
-            "Canavarın Canını azalttın",
-            "Özel Saldırı",
-            "Sağlık Tamlaması",
-          ],
-        },
-        methods: {
-          logAction(f, t, q) {
-            if (this.actions.length >= 14) {
-              this.actions.shift();
-            }
-            myObj = { from: f, type: t, quantity: q };
-            this.actions.push(myObj);
-          },
-          newGame() {
-            this.isOn = true;
-            this.myHealth = 100;
-            this.enemyHealth = 100;
-            this.actions = [];
-          },
-          gameOver() {
-            this.isOn = false;
-          },
-          attack() {
-            rand = this.getRandomNumber(2, 16);
-            this.logAction("player-turn", this.types[0], rand);
-            this.enemyHealth += -rand;
-            this.monsterAttack(0);
-          },
-          specialAttack() {
-            type = this.types[1];
-            rand = this.getRandomNumber(10, 26);
-            if (rand === 25) {
-              type = "Ultra Özel Saldırı";
-              rand = 99999;
-            }
-            this.enemyHealth += -rand;
-            this.logAction("player-turn", type, rand);
-            this.monsterAttack(0);
-          },
-          monsterAttack(heal) {
-            rand = this.getRandomNumber(6, 21);
-            this.logAction("monster-turn", "Canavar Saldırısı", rand);
-            this.myHealth += heal - rand;
-          },
-          healUp() {
-            rand = this.getRandomNumber(20, 36);
-            this.logAction("player-turn", this.types[2], rand);
-            //this.myHealth += rand;
-            this.monsterAttack(rand);
-          },
-          giveUp()
-          {
-            this.gameOver();
-          },
-          getRandomNumber(lb, ub) {
-            return Math.floor(Math.random() * (ub - lb) + lb);
-          },
-        },
-        watch: {
-          myHealth(value) {
-            if (value <= 0) {
-              this.myHealth = 0;
-              this.gameOver();
-            } else if (value >= 100) {
-              this.myHealth = 100;
-            }
-          },
-          enemyHealth(value) {
-            if (value <= 0) {
-              this.enemyHealth = 0;
-              this.gameOver();
-            } else if (value >= 100) {
-              this.enemyHealth = 100; // unnecessary but why not :p
-            }
-          },
-        },
-      });
-    </script>
+    <script src="assets/script/app.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
