@@ -89,8 +89,15 @@
           <button class="btn btn-lg btn-danger mx-2 px-4" @click="attack">
             Saldırı
           </button>
-          <button class="btn btn-lg btn-warning mx-2 px-4">Özel Saldırı</button>
-          <button class="btn btn-lg btn-success mx-2 px-4">Sağlık</button>
+          <button
+            class="btn btn-lg btn-warning mx-2 px-4"
+            @click="specialAttack"
+          >
+            Özel Saldırı
+          </button>
+          <button class="btn btn-lg btn-success mx-2 px-4" @click="healUp">
+            Sağlık
+          </button>
           <button class="btn btn-lg btn-secondary mx-2 px-4">Pes Et</button>
         </template>
         <template v-else>
@@ -102,7 +109,7 @@
       <div v-if="this.actions.length !== 0" class="log mt-3">
         <ul>
           <li v-for="action in actions" :class="[action.from]">
-            {{action.from}} {{action.type}}
+            {{action}}
           </li>
         </ul>
       </div>
@@ -133,6 +140,7 @@
             this.isOn = true;
             this.myHealth = 100;
             this.enemyHealth = 100;
+            this.actions = [];
           },
           gameOver() {
             this.isOn = false;
@@ -140,20 +148,30 @@
           attack() {
             rand = this.getRandomNumber(2, 16);
             this.logAction("player-turn", this.types[0], rand);
+            this.enemyHealth += -rand;
+            this.monsterAttack(0);
           },
           specialAttack() {
-            type = this.types[0];
+            type = this.types[1];
             rand = this.getRandomNumber(10, 26);
             if (rand === 25) {
               type = "Ultra Özel Saldırı";
               rand = 99999;
             }
-            this.logAction("player-turn", type , rand);
+            this.enemyHealth += -rand;
+            this.logAction("player-turn", type, rand);
+            this.monsterAttack(0);
           },
           monsterAttack(heal) {
             rand = this.getRandomNumber(5, 26);
             this.logAction("monster-turn", "Canavar Saldırısı", rand);
-            this.myHealth += (heal - rand);
+            this.myHealth += heal - rand;
+          },
+          healUp() {
+            rand = this.getRandomNumber(20, 36);
+            this.logAction("player-turn", this.types[2], rand);
+            //this.myHealth += rand;
+            this.monsterAttack(rand);
           },
           getRandomNumber(lb, ub) {
             return Math.floor(Math.random() * (ub - lb) + lb);
@@ -161,13 +179,10 @@
         },
         watch: {
           myHealth(value) {
-            // console.log(`Watch Report: ${value}`);
             if (value <= 0) {
               this.myHealth = 0;
               this.gameOver();
-            }
-            else if (value >= 100)
-            {
+            } else if (value >= 100) {
               this.myHealth = 100;
             }
           },
@@ -175,14 +190,11 @@
             if (value <= 0) {
               this.enemyHealth = 0;
               this.gameOver();
-            }
-            else if (value >= 100)
-            {
+            } else if (value >= 100) {
               this.enemyHealth = 100; // unnecessary but why not :p
             }
           },
         },
-        computed: {},
       });
     </script>
     <script
