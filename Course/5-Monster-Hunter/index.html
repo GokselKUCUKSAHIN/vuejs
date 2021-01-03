@@ -40,8 +40,25 @@
         padding-top: 25px;
         padding-bottom: 25px;
       }
+      .log ul {
+        list-style: none;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .log ul li {
+        margin: 5px;
+      }
+      .log ul .player-turn {
+        color: blue;
+        background-color: #e4e8ff;
+      }
+      .log ul .monster-turn {
+        color: red;
+        background-color: #ffc0c1;
+      }
       .btn {
         text-transform: uppercase;
+        box-shadow: 0 1px 1px darkgray;
       }
     </style>
   </head>
@@ -69,16 +86,25 @@
       </div>
       <div class="button-box mt-3">
         <template v-if="isOn">
-          <button class="btn btn-lg btn-danger mx-2 px-4">Saldırı</button>
+          <button class="btn btn-lg btn-danger mx-2 px-4" @click="attack">
+            Saldırı
+          </button>
           <button class="btn btn-lg btn-warning mx-2 px-4">Özel Saldırı</button>
           <button class="btn btn-lg btn-success mx-2 px-4">Sağlık</button>
           <button class="btn btn-lg btn-secondary mx-2 px-4">Pes Et</button>
         </template>
         <template v-else>
-          <button class="btn btn-lg btn-success" @click="isOn = !isOn;">
+          <button class="btn btn-lg btn-success" @click="newGame">
             Yeni Oyun
           </button>
         </template>
+      </div>
+      <div v-if="this.actions.length !== 0" class="log mt-3">
+        <ul>
+          <li v-for="action in actions" :class="[action.from]">
+            {{action.from}} {{action.type}}
+          </li>
+        </ul>
       </div>
     </div>
     <script>
@@ -88,15 +114,75 @@
           isOn: false,
           myHealth: 100,
           enemyHealth: 100,
+          actions: [],
+          types: [
+            "Canavarın Canını azalttın",
+            "Özel Saldırı",
+            "Sağlık Tamlaması",
+          ],
         },
-        methods: {},
-        computed: {},
+        methods: {
+          logAction(f, t, q) {
+            if (this.actions.length >= 14) {
+              this.actions.shift();
+            }
+            myObj = { from: f, type: t, quantity: q };
+            this.actions.push(myObj);
+          },
+          newGame() {
+            this.isOn = true;
+            this.myHealth = 100;
+            this.enemyHealth = 100;
+          },
+          gameOver() {
+            this.isOn = false;
+          },
+          attack() {
+            rand = this.getRandomNumber(2, 16);
+            this.logAction("player-turn", this.types[0], rand);
+          },
+          specialAttack() {
+            type = this.types[0];
+            rand = this.getRandomNumber(10, 26);
+            if (rand === 25) {
+              type = "Ultra Özel Saldırı";
+              rand = 99999;
+            }
+            this.logAction("player-turn", type , rand);
+          },
+          monsterAttack(heal) {
+            rand = this.getRandomNumber(5, 26);
+            this.logAction("monster-turn", "Canavar Saldırısı", rand);
+            this.myHealth += (heal - rand);
+          },
+          getRandomNumber(lb, ub) {
+            return Math.floor(Math.random() * (ub - lb) + lb);
+          },
+        },
         watch: {
           myHealth(value) {
-            
+            // console.log(`Watch Report: ${value}`);
+            if (value <= 0) {
+              this.myHealth = 0;
+              this.gameOver();
+            }
+            else if (value >= 100)
+            {
+              this.myHealth = 100;
+            }
           },
-          enemyHealth(value) {},
+          enemyHealth(value) {
+            if (value <= 0) {
+              this.enemyHealth = 0;
+              this.gameOver();
+            }
+            else if (value >= 100)
+            {
+              this.enemyHealth = 100; // unnecessary but why not :p
+            }
+          },
         },
+        computed: {},
       });
     </script>
     <script
