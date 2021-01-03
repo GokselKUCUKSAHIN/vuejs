@@ -41,7 +41,7 @@
         padding-bottom: 25px;
       }
       .btn {
-       text-transform: uppercase; 
+        text-transform: uppercase;
       }
     </style>
   </head>
@@ -85,14 +85,18 @@
       new Vue({
         el: "#app",
         data: {
-          vueTest: "Vue Working...",
           isOn: false,
           myHealth: 100,
           enemyHealth: 100,
         },
         methods: {},
         computed: {},
-        watch: {},
+        watch: {
+          myHealth(value) {
+            
+          },
+          enemyHealth(value) {},
+        },
       });
     </script>
     <script
