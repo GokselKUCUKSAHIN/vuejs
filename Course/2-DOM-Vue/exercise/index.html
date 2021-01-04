@@ -24,23 +24,6 @@
         <p>{{ value }}</p>
       </div>
     </div>
-    <script>
-      new Vue({
-        el: "#exercise",
-        data: {
-          value: 0,
-          result: 0,
-          ms: "",
-        },
-        methods: {
-          submit() {
-            console.log("Enter!");
-            setTimeout(() => {
-              this.result = this.value;
-            }, this.ms);
-          },
-        },
-      });
-    </script>
+    <script src="exercise.js"></script>
   </body>
 </html>
