@@ -102,37 +102,7 @@
       </div>
     </div>
     <br /><br />
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          count: 0,
-          mx: 0,
-          my: 0,
-          overflow: false,
-        },
-        watch: {
-          count(value)
-          {
-            this.overflow = value >= 1000;
-          }
-        },
-        methods: {
-          increaseCount(c) {
-            this.count += c;
-          },
-          showAlert() {
-            alert(`Current Count = ${this.count}.`);
-          },
-          captureMouseMove(step, e) {
-            // console.log(e);
-            this.mx = e.offsetX;
-            this.my = e.offsetY;
-            this.count += step;
-          },
-        },
-      });
-    </script>
+    <script src="4-Event-Listening.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
