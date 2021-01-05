@@ -32,8 +32,8 @@
       <ul>
         <li v-for="(value, key, index) in testData">
           <strong>{{ key }}</strong>:
-          <template v-if="index == 2"
-            ><ul>
+          <template v-if="Array.isArray(value)">
+            <ul>
               <li v-for="i in value">
                 <b>{{i}}</b>
               </li>
