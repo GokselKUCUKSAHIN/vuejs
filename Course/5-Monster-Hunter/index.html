@@ -59,6 +59,8 @@
       </div>
       <div v-if="this.actions.length !== 0" class="log mt-3">
         <ul>
+          <!-- Slice Arraying bire bir kopyasını oluşturuyor. Reverse ise Ters çeviriyor.
+            Sadece Reverse olursa asıl diziyide tersliyor. Slice bu yüzden önemli. -->
           <li v-for="action in actions.slice().reverse()" :class="[action.from]">{{action.type}}: ({{action.quantity}})</li>
         </ul>
       </div>
