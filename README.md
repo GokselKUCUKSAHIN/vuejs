@@ -10,3 +10,13 @@ or:
 ---
 ## Vue.js Documentation.
 [![](/Resources/img/vue.png "Vuejs.org")](https://vuejs.org/v2/guide/syntax.html)
+
+### `Yüklemek için`
+## `Vue CLI`
+``` bash
+npm install -g vue-cli
+```
+
+|`simple`|`webpack-simple`|`webpack`|`browserify` / `browserify-simple`| 
+|:---:|:---:|:---:|:---:|
+|index.html + Vue CDN|Temel Webpack Workflow|Complex Webpack Workflow (test dahil)|Browserify Workflows|
