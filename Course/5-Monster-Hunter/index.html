@@ -11,7 +11,7 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/app.css" />
   </head>
   <body>
     <div id="app">
@@ -21,7 +21,7 @@
           <h2 class="">SEN</h2>
           <div class="progress-box">
             <div class="progress-bar" :style="{width: myHealth + '%'}">
-              <h3> {{myHealth}}% </h3>
+              <h3>{{myHealth}}%</h3>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <h2>CANAVAR</h2>
           <div class="progress-box">
             <div class="progress-bar" :style="{width: enemyHealth + '%'}">
-              <h3> {{enemyHealth}}% </h3>
+              <h3>{{enemyHealth}}%</h3>
             </div>
           </div>
         </div>
@@ -49,7 +49,9 @@
           <button class="btn btn-lg btn-success mx-2 px-4" @click="healUp">
             Sağlık
           </button>
-          <button class="btn btn-lg btn-secondary mx-2 px-4" @click="giveUp">Pes Et</button>
+          <button class="btn btn-lg btn-secondary mx-2 px-4" @click="giveUp">
+            Pes Et
+          </button>
         </template>
         <template v-else>
           <button class="btn btn-lg btn-success" @click="newGame">
@@ -61,7 +63,12 @@
         <ul>
           <!-- Slice Arraying bire bir kopyasını oluşturuyor. Reverse ise Ters çeviriyor.
             Sadece Reverse olursa asıl diziyide tersliyor. Slice bu yüzden önemli. -->
-          <li v-for="action in actions.slice().reverse()" :class="[action.from]">{{action.type}}: ({{action.quantity}})</li>
+          <li
+            v-for="action in actions.slice().reverse()"
+            :class="[action.from]"
+          >
+            {{action.type}}: ({{action.quantity}})
+          </li>
         </ul>
       </div>
     </div>
