@@ -1,8 +1,8 @@
 {
-  "name": "component-kullanimi",
-  "description": "A Vue.js project",
+  "name": "homework",
+  "description": "homework project",
   "version": "1.0.0",
-  "author": "gkandemi <gokhan@gkandemir.com>",
+  "author": "jellybeanci <gokselkucuksahin@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

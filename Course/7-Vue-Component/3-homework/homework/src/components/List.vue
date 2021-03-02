@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <ul class="list-group">
-        <v-listItem v-for="index in 5" :idx=index>
+        <v-listItem v-for="index in 5" :key="index" :idx="index">
         </v-listItem>
       </ul>
     </div>
