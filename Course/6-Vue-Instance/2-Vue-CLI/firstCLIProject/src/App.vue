@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Sunucu durumu {{ status }}</h1>
-    <lamp-comp></lamp-comp>
+    <lamps></lamps>
   </div>
 </template>
 <script>
