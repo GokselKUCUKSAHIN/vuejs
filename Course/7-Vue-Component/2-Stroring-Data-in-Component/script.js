@@ -1,5 +1,5 @@
 Vue.component("my-comp", {
-  data(){
+  data() {
     return {
       status: "Passive",
     };
@@ -8,7 +8,7 @@ Vue.component("my-comp", {
     "<h2>Status is {{status}} <button @click='changeStatus'>Change</button></h2>",
   methods: {
     changeStatus() {
-      this.status = "Active"
+      this.status = "Active";
     },
   },
 });
