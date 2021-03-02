@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Header from './Header';
-import List from './List';
-import Footer from './Footer';
+import Header from "./components/common/Header";
+import List from "./components/List";
+import Footer from "./components/common/Footer";
 export default {
   components: {
     "v-header": Header,
-    "v-list" : List,
+    "v-list": List,
     "v-footer": Footer
   }
 };
