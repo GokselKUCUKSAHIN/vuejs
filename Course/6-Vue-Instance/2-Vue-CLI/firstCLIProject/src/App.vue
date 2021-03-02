@@ -4,7 +4,6 @@
     <lamp-comp></lamp-comp>
   </div>
 </template>
-
 <script>
 export default {
   data() {

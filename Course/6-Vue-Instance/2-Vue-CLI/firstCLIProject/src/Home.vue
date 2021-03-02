@@ -1,21 +1,14 @@
 <template>
   <div>
-    <p>Lamba Durumu : {{ status }}</p>
-    <hr />
-    <button @click="toggleLamp">Lambayı Aç/Kapat</button>
+    <lamp-status v-for="lamp in 5"></lamp-status>
   </div>
 </template>
+
 <script>
+import LampStatus from "./LampStatus";
 export default {
-  data() {
-    return {
-      status: false
-    };
-  },
-  methods: {
-    toggleLamp() {
-      this.status = !this.status;
-    }
+  components: {
+    "lamp-status": LampStatus
   }
 };
 </script>
