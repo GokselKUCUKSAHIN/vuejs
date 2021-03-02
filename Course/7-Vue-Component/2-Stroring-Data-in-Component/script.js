@@ -1,4 +1,4 @@
-Vue.component("my-comp", {
+const cmp = {
   data() {
     return {
       status: "Passive",
@@ -11,7 +11,15 @@ Vue.component("my-comp", {
       this.status = "Active";
     },
   },
-});
+};
+
 new Vue({
   el: "#app",
+  components: {
+    "my-comp": cmp,
+  },
+});
+
+new Vue({
+  el: "#app2",
 });
