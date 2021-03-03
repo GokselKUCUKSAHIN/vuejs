@@ -1,6 +1,6 @@
 # homework
 
-> homework project
+> homework
 
 ## Build Setup
 
