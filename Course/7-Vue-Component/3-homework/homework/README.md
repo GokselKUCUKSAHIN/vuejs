@@ -1,6 +1,6 @@
-# component-kullanimi
+# homework
 
-> A Vue.js project
+> homework project
 
 ## Build Setup
 
