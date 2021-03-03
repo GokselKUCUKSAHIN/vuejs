@@ -3,3 +3,9 @@
     <p>Sunucu Bilgisi güncel değil!!</p>
   </div>
 </template>
+
+<style scoped>
+  div{
+    border: 2px solid yellow;
+  }
+</style>
