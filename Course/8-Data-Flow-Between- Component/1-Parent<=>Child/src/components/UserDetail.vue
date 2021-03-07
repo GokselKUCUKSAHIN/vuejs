@@ -13,13 +13,13 @@
 export default {
   props: {
     name: {
-      type: String,
+      type: [String, Number],
       default: "BLANK STRING",
     },
   },
   methods: {
     reverseName() {
-      return this.name.split("").reverse().join("");
+      return (this.name + "").split("").reverse().join("");
     },
     sendToParent() {
       this.$emit("data", "Data from Child Element");
