@@ -5,17 +5,23 @@
       Ben User.vue isimli Parent Component'in içerisindeki bir Child componentim
     </p>
     <p>Kullanıcı Adı: {{ name }}</p>
+    <p>Kullanıcı Adı Tersten: {{ reverseName() }}</p>
   </div>
 </template>
 <script>
 export default {
-  props : ["name"],
-}
+  props: ["name"],
+  methods: {
+    reverseName() {
+      return this.name.split("").reverse().join("");
+    },
+  },
+};
 </script>
 <style scoped>
 div {
   background-color: lightcoral;
-  padding: 20px;  
+  padding: 20px;
   border: 1px solid #666;
   display: inline-block;
 }
