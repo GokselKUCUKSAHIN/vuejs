@@ -6,6 +6,7 @@
     </p>
     <p>Kullanıcı Adı: {{ name }}</p>
     <p>Kullanıcı Adı Tersten: {{ reverseName() }}</p>
+    <p>Kullanıcı Yaşı: {{ age }}</p>
     <button @click="sendToParent">Veriyi Root'a gönder</button>
   </div>
 </template>
@@ -14,17 +15,24 @@ export default {
   props: {
     name: {
       type: [String, Number],
-      default: "BLANK STRING",
+      default: "BLANK STRING"
     },
+    age: {
+      type: String,
+      default: "25"
+    }
   },
   methods: {
     reverseName() {
-      return (this.name + "").split("").reverse().join("");
+      return (this.name + "")
+        .split("")
+        .reverse()
+        .join("");
     },
     sendToParent() {
       this.$emit("data", "Data from Child Element");
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>

@@ -2,14 +2,19 @@
   <div class="container">
     <h1>Parent Component (User)</h1>
     <p>Burası parent component yani her şeyin import edildiği component :)</p>
-    <p>Child Componentten gelen veri: {{recive}}</p>
+    <p>Child Componentten gelen veri: {{ recive }}</p>
     <button @click="changeName">Adımı Değiştir</button>
     <button @click="title = 123">Sayı gönder</button>
     <button @click="title = undefined">Boş gönder</button>
+    <p>Parent üzerindeki Kullanıcı Yaşı: {{ age }}</p>
     <hr />
     <div class="row">
-      <app-user-detail @data="getData" :name="title"></app-user-detail>
-      <app-user-edit></app-user-edit>
+      <app-user-detail
+        @data="getData"
+        :name="title"
+        :age="age"
+      ></app-user-detail>
+      <app-user-edit :age="age" @sage="getAge"></app-user-edit>
     </div>
   </div>
 </template>
@@ -20,12 +25,13 @@ import UserEdit from "./UserEdit";
 export default {
   components: {
     "app-user-detail": UserDetail,
-    "app-user-edit": UserEdit,
+    "app-user-edit": UserEdit
   },
   data() {
     return {
       title: "Göksel",
       recive: "",
+      age: 25
     };
   },
   methods: {
@@ -36,7 +42,10 @@ export default {
       // console.log(event);
       this.recive = event;
     },
-  },
+    getAge(event) {
+      this.age = event;
+    }
+  }
 };
 </script>
 
