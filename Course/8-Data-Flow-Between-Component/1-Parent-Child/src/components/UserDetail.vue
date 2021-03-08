@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import { eventBus } from "../main";
 export default {
   props: {
     name: {
@@ -32,6 +33,11 @@ export default {
     sendToParent() {
       this.$emit("data", "Data from Child Element");
     }
+  },
+  created() {
+    eventBus.$on("sage", value => {
+      this.age = value;
+    });
   }
 };
 </script>
