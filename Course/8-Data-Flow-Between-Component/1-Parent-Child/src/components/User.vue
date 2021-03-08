@@ -14,7 +14,7 @@
         :name="title"
         :age="age"
       ></app-user-detail>
-      <app-user-edit :age="age" @sage="getAge"></app-user-edit>
+      <app-user-edit :age="age"></app-user-edit>
     </div>
   </div>
 </template>
