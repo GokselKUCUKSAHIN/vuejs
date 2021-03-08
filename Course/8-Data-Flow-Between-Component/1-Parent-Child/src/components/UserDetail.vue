@@ -47,5 +47,6 @@ div {
   padding: 20px;
   border: 1px solid #666;
   display: inline-block;
+  min-height: 270px;
 }
 </style>
