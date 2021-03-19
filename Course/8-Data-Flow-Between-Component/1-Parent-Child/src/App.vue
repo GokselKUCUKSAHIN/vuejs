@@ -1,13 +1,13 @@
 <template>
-    <app-user></app-user>
+  <app-user></app-user>
 </template>
 
 <script>
-  import User from "./components/User";
+import User from "./components/User";
 
 export default {
-  components : {
-    appUser : User
+  components: {
+    appUser: User
   }
 }
 </script>

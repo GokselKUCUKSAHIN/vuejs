@@ -25,7 +25,7 @@ export default {
   methods: {
     changeAge() {
       this.age = 30;
-      eventBus.$emit("sage", this.age);
+      eventBus.changeAge(this.age);
     }
   }
 };

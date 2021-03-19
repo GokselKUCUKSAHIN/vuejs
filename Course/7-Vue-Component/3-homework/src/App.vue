@@ -12,6 +12,7 @@
 import Header from "./components/common/Header";
 import List from "./components/List";
 import Footer from "./components/common/Footer";
+
 export default {
   components: {
     "v-header": Header,
