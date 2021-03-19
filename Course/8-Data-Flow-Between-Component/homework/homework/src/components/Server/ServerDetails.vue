@@ -2,6 +2,7 @@
   <div class="col-xs-12 col-sm-6">
     <p>Sunucu Durumu: {{ server.status }}
       <button
+        class="btn btn-primary btn-sm"
         v-if="this.server.id"
         @click="changeStatus('Normal')">
         Düzelt
