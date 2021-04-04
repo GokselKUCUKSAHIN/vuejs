@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jelly Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="playPause">{{label}}</button>
+      <br />
+      <h1>{{word}}</h1>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          label: "play",
+          words: [
+            "Speed",
+            "reading",
+            "is",
+            "the",
+            "art",
+            "of",
+            "silencing",
+            "subvocalization.",
+            "Most",
+            "readers",
+            "have",
+            "an",
+            "average",
+            "reading",
+            "speed",
+            "of",
+            "200",
+            "wpm,",
+            "which",
+            "is",
+            "about",
+            "as",
+            "fast",
+            "as",
+            "they",
+            "can",
+            "read",
+            "a",
+            "passage",
+            "out",
+            "loud.",
+            "This",
+            "is",
+            "no",
+            "coincidence.",
+            "It",
+            "is",
+            "their",
+            "inner",
+            "voice",
+            "that",
+            "paces",
+            "through",
+            "the",
+            "text",
+            "that",
+            "keeps",
+            "them",
+            "from",
+            "achieving",
+            "higher",
+            "reading",
+            "speeds.",
+            "They",
+            "can",
+            "only",
+            "read",
+            "as",
+            "fast",
+            "as",
+            "they",
+            "can",
+            "speak",
+            "because",
+            "that's",
+            "the",
+            "way",
+            "they",
+            "were",
+            "taught",
+            "to",
+            "read,",
+            "through",
+            "reading",
+            "systems",
+            "like",
+            "Hooked",
+            "on",
+            "Phonics",
+          ],
+          word: "",
+          index: 0,
+          isPlaying: false,
+        },
+        methods: {
+          read() {
+            this.word = this.words[this.index++];
+            if (this.index >= this.words.length) {
+              this.index = 0;
+            }
+          },
+          playPause() {
+            this.isPlaying = !this.isPlaying;
+            this.label = this.isPlaying ? "pause" : "play";
+          },
+        },
+        mounted() {
+          this.word = this.words[0];
+          setInterval(() => {
+            if (this.isPlaying) {
+              this.read();
+            }
+          }, 350);
+        },
+      });
+    </script>
+  </body>
+</html>
