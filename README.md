@@ -9,7 +9,7 @@ or:
 ```
 ---
 ## Vue.js Documentation.
-[![](/Resources/img/vue.png "Vuejs.org")](https://vuejs.org/v2/guide/syntax.html)
+[![](Resources/img/vue.png "Vuejs.org")](https://vuejs.org/v2/guide/syntax.html)
 
 ### `Yüklemek için`
 ## `Vue CLI`
