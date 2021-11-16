@@ -26,10 +26,10 @@ export default {
   },
   methods: {
     reverseName() {
-      return (this.name + "")
-        .split("")
-        .reverse()
-        .join("");
+      return this.reverseString(this.name + "");
+    },
+    reverseString(str) {
+      return str.split('').reverse().join('');
     },
     sendToParent() {
       this.$emit("data", "Data from Child Element");
