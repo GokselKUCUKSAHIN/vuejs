@@ -1,0 +1,1 @@
+export type StyleProperty = { [key: string]: boolean };
